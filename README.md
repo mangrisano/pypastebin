@@ -1,7 +1,7 @@
 # pypastebin
 
 
-What it does
+What it does?
 ------
 PyPastebin is a tool that allows you to generate a pastebin url inside a shell.
 
@@ -10,7 +10,8 @@ Prerequisites
 * A shell :)
 * Python3.x
 * requests module
-  * If you don't have `requests`, you can install it running:
+
+  * If you don't have `requests`, you can install it running in a shell:
     ```
     pip3 install requests
     ```

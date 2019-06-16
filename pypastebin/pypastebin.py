@@ -8,7 +8,7 @@ DEFAULT_SYNTAX = 'text'
 DEFAULT_FILE = sys.stdin
 
 
-class Pastebin(object):
+class PyPastebin(object):
 
     def __init__(self, file=None, syntax=None, expires=None):
         self.file = file
@@ -89,5 +89,5 @@ class Pastebin(object):
         return response, status_code
 
 if __name__ == '__main__':
-    pastebin = Pastebin(syntax='python3')
+    pastebin = PyPastebin(syntax='python3')
     print(pastebin)

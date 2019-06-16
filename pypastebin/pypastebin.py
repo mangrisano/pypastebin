@@ -8,6 +8,10 @@ DEFAULT_SYNTAX = 'text'
 DEFAULT_FILE = sys.stdin
 
 
+# TODO: Add the options for choosing different syntaxes [text by default]
+#       Add the options for choosing different expires [1 by default]
+#       Choose a different pastebin [dpaste by default]
+
 class PyPastebin(object):
 
     def __init__(self, file=None, syntax=None, expires=None):

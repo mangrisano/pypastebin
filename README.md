@@ -1,7 +1,7 @@
 # pypastebin
 
 
-What it does?
+What is it?
 ------
 PyPastebin is a tool that allows you to generate a pastebin url inside a shell.
 

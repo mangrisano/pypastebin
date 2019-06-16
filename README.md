@@ -15,8 +15,10 @@ Usage
 -----
 ```
 $ cat pypastebin.py | python3 pypastebin.py
+```
 
 Output:
+```
 The url is: http://dpaste.com/xxxxxx
 ```
 

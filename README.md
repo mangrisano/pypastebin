@@ -9,11 +9,7 @@ Prerequisites
 -----
 * A shell :)
 * Python3.x
-* requests module
-  * If you don't have `requests`, you can install it running in a shell:
-    ```
-    pip3 install requests
-    ```
+* requests module. Install it with `pip3 install requests`
 
 Usage
 -----

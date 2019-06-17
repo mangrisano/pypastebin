@@ -66,7 +66,7 @@ class PyPastebin(object):
         try:
             response, status_code = self._get_request_info()
         except TypeError:
-            print("A problem was occurred. It's impossible to generate the url")
+            print("A problem was occurred. It's impossible to generate the url.")
             return None
 
         if status_code == self._status_codes['Created']:

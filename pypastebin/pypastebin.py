@@ -69,7 +69,7 @@ class PyPastebin(object):
     def _generate_url(self):
         """Return the url of the pastebin.
 
-        If the status_code is not equal to 201, None will be returned.
+        If the status_code is not equal to 201, the url will be an empty string.
         """
 
         self._get_request_info()

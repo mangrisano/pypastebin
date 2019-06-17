@@ -17,6 +17,7 @@ DEFAULT_FILE = sys.stdin
 class PyPastebin(object):
 
     def __init__(self, file=None, syntax=None, expires=None):
+
         self.file = file
         self.syntax = syntax
         self.expires = expires
@@ -40,11 +41,12 @@ class PyPastebin(object):
                 'expiry_days': (None, self.expires),
         }
         self._response = self._status_code = None
-        self.url = None
+        self.url = ""
         self.get_url()
 
 
     def __str__(self):
+
         if not self.url:
             return 'No url has been generated.'
 
@@ -65,15 +67,14 @@ class PyPastebin(object):
 
 
     def _generate_url(self):
-        """ Return the url of the pastebin.
+        """Return the url of the pastebin.
 
         If the status_code is not equal to 201, None will be returned.
         """
+
         self._get_request_info()
         if self._status_code == self._status_codes['Created']:
             return self._response.text[:len(self._response.text)-1]
-
-        return None
 
 
     def _get_request_info(self):
@@ -92,5 +93,5 @@ class PyPastebin(object):
         self._status_code = self._response.status_code
 
 if __name__ == '__main__':
-    pastebin = PyPastebin(syntax='python3')
+    pastebin = PyPastebin()
     print(pastebin)

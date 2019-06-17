@@ -39,9 +39,9 @@ class PyPastebin(object):
                 'syntax': (None, self.syntax),
                 'expiry_days': (None, self.expires),
         }
-
-        self._response, self._status_code = self._get_request_info()
-        self.url = self.get_url()
+        self._response = self._status_code = None
+        self.url = None
+        self.get_url()
 
 
     def __str__(self):
@@ -59,11 +59,9 @@ class PyPastebin(object):
         """
 
         try:
-            url = self._generate_url()
+            self.url = self._generate_url()
         except:
             raise Exception('It might be there is no content.')
-
-        return url
 
 
     def _generate_url(self):
@@ -71,7 +69,7 @@ class PyPastebin(object):
 
         If the status_code is not equal to 201, None will be returned.
         """
-
+        self._get_request_info()
         if self._status_code == self._status_codes['Created']:
             return self._response.text[:len(self._response.text)-1]
 
@@ -90,9 +88,8 @@ class PyPastebin(object):
         204: No content
         """
 
-        response = requests.post(URL, files=self.files)
-        status_code = response.status_code
-        return response, status_code
+        self._response = requests.post(URL, files=self.files)
+        self._status_code = self._response.status_code
 
 if __name__ == '__main__':
     pastebin = PyPastebin(syntax='python3')

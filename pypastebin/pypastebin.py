@@ -35,12 +35,6 @@ class PyPastebin(object):
         if self.expires is None:
             self.expires = DEFAULT_EXPIRE
 
-        self.files = {
-                'content': (None, self.file),
-                'syntax': (None, self.syntax),
-                'expiry_days': (None, self.expires),
-        }
-        self._response = self._status_code = None
         self.url = ""
         self.get_url()
 
@@ -72,9 +66,9 @@ class PyPastebin(object):
         If the status_code is not equal to 201, the url will be an empty string.
         """
 
-        self._get_request_info()
-        if self._status_code == self._status_codes['Created']:
-            return self._response.text[:len(self._response.text)-1]
+        response, status_code = self._get_request_info()
+        if status_code == self._status_codes['Created']:
+            return response.text[:len(response.text)-1]
 
 
     def _get_request_info(self):
@@ -87,9 +81,21 @@ class PyPastebin(object):
         202: Accepted
         204: No content
         """
+        files = {
+                'content': (None, self.file),
+                'syntax': (None, self.syntax),
+                'expiry_days': (None, self.expires),
+        }
 
-        self._response = requests.post(URL, files=self.files)
-        self._status_code = self._response.status_code
+        try:
+            response = requests.post(URL, files=files)
+        except requests.exceptions.RequestException as err:
+            print(err)
+            return
+
+        status_code = response.status_code
+
+        return response, status_code
 
 if __name__ == '__main__':
     pastebin = PyPastebin()
